@@ -29,40 +29,143 @@ public class homeFrame extends javax.swing.JFrame {
 
         mainSplitPane = new javax.swing.JSplitPane();
         leftSplit = new javax.swing.JPanel();
-        rightSplit = new javax.swing.JPanel();
+        btnProject = new javax.swing.JButton();
+        btnTask = new javax.swing.JButton();
+        btnSchedule = new javax.swing.JButton();
+        btnHistory = new javax.swing.JButton();
+        rightSplit = new javax.swing.JLayeredPane();
+        projectPanel = new javax.swing.JPanel();
+        taskPanel = new javax.swing.JPanel();
+        schedulePanel = new javax.swing.JPanel();
+        historyPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        mainSplitPane.setDividerLocation(186);
+        mainSplitPane.setDividerLocation(146);
         mainSplitPane.setPreferredSize(new java.awt.Dimension(720, 480));
 
         leftSplit.setBackground(new java.awt.Color(102, 102, 102));
+
+        btnProject.setText("Project");
+        btnProject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProjectActionPerformed(evt);
+            }
+        });
+
+        btnTask.setText("Task");
+        btnTask.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaskActionPerformed(evt);
+            }
+        });
+
+        btnSchedule.setText("Schedule");
+        btnSchedule.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnScheduleActionPerformed(evt);
+            }
+        });
+
+        btnHistory.setText("History");
+        btnHistory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHistoryActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout leftSplitLayout = new javax.swing.GroupLayout(leftSplit);
         leftSplit.setLayout(leftSplitLayout);
         leftSplitLayout.setHorizontalGroup(
             leftSplitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(leftSplitLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(leftSplitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnProject, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                    .addGroup(leftSplitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnSchedule, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                        .addComponent(btnTask, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnHistory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         leftSplitLayout.setVerticalGroup(
             leftSplitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGroup(leftSplitLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(btnProject, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(btnTask, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(53, 53, 53)
+                .addComponent(btnSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addComponent(btnHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
 
         mainSplitPane.setLeftComponent(leftSplit);
 
         rightSplit.setBackground(new java.awt.Color(255, 255, 255));
+        rightSplit.setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout rightSplitLayout = new javax.swing.GroupLayout(rightSplit);
-        rightSplit.setLayout(rightSplitLayout);
-        rightSplitLayout.setHorizontalGroup(
-            rightSplitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 529, Short.MAX_VALUE)
+        projectPanel.setBackground(new java.awt.Color(102, 255, 255));
+
+        javax.swing.GroupLayout projectPanelLayout = new javax.swing.GroupLayout(projectPanel);
+        projectPanel.setLayout(projectPanelLayout);
+        projectPanelLayout.setHorizontalGroup(
+            projectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 569, Short.MAX_VALUE)
         );
-        rightSplitLayout.setVerticalGroup(
-            rightSplitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        projectPanelLayout.setVerticalGroup(
+            projectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 480, Short.MAX_VALUE)
         );
+
+        rightSplit.add(projectPanel, "card2");
+
+        taskPanel.setBackground(new java.awt.Color(255, 0, 204));
+
+        javax.swing.GroupLayout taskPanelLayout = new javax.swing.GroupLayout(taskPanel);
+        taskPanel.setLayout(taskPanelLayout);
+        taskPanelLayout.setHorizontalGroup(
+            taskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 569, Short.MAX_VALUE)
+        );
+        taskPanelLayout.setVerticalGroup(
+            taskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+        );
+
+        rightSplit.add(taskPanel, "card3");
+
+        schedulePanel.setBackground(new java.awt.Color(204, 255, 51));
+
+        javax.swing.GroupLayout schedulePanelLayout = new javax.swing.GroupLayout(schedulePanel);
+        schedulePanel.setLayout(schedulePanelLayout);
+        schedulePanelLayout.setHorizontalGroup(
+            schedulePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 569, Short.MAX_VALUE)
+        );
+        schedulePanelLayout.setVerticalGroup(
+            schedulePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+        );
+
+        rightSplit.add(schedulePanel, "card4");
+
+        historyPanel.setBackground(new java.awt.Color(153, 255, 153));
+
+        javax.swing.GroupLayout historyPanelLayout = new javax.swing.GroupLayout(historyPanel);
+        historyPanel.setLayout(historyPanelLayout);
+        historyPanelLayout.setHorizontalGroup(
+            historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 569, Short.MAX_VALUE)
+        );
+        historyPanelLayout.setVerticalGroup(
+            historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 480, Short.MAX_VALUE)
+        );
+
+        rightSplit.add(historyPanel, "card5");
 
         mainSplitPane.setRightComponent(rightSplit);
 
@@ -79,6 +182,38 @@ public class homeFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjectActionPerformed
+        // TODO add your handling code here:
+        rightSplit.removeAll();
+        rightSplit.add(projectPanel);
+        rightSplit.repaint();
+        rightSplit.revalidate();
+    }//GEN-LAST:event_btnProjectActionPerformed
+
+    private void btnTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaskActionPerformed
+        // TODO add your handling code here:
+        rightSplit.removeAll();
+        rightSplit.add(taskPanel);
+        rightSplit.repaint();
+        rightSplit.revalidate();
+    }//GEN-LAST:event_btnTaskActionPerformed
+
+    private void btnScheduleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScheduleActionPerformed
+        // TODO add your handling code here:
+        rightSplit.removeAll();
+        rightSplit.add(schedulePanel);
+        rightSplit.repaint();
+        rightSplit.revalidate();
+    }//GEN-LAST:event_btnScheduleActionPerformed
+
+    private void btnHistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHistoryActionPerformed
+        // TODO add your handling code here:
+        rightSplit.removeAll();
+        rightSplit.add(historyPanel);
+        rightSplit.repaint();
+        rightSplit.revalidate();
+    }//GEN-LAST:event_btnHistoryActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,8 +252,16 @@ public class homeFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnHistory;
+    private javax.swing.JButton btnProject;
+    private javax.swing.JButton btnSchedule;
+    private javax.swing.JButton btnTask;
+    private javax.swing.JPanel historyPanel;
     private javax.swing.JPanel leftSplit;
     private javax.swing.JSplitPane mainSplitPane;
-    private javax.swing.JPanel rightSplit;
+    private javax.swing.JPanel projectPanel;
+    private javax.swing.JLayeredPane rightSplit;
+    private javax.swing.JPanel schedulePanel;
+    private javax.swing.JPanel taskPanel;
     // End of variables declaration//GEN-END:variables
 }
