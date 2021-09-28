@@ -12,7 +12,11 @@ import java.sql.ResultSet;
 public class mainClass {
     public static void main(String args[])
     {
+        /*
         database db = new database();
+        db.runWriteQuery("insert into tasks (`task-name` , `task-unit`) values('Abhshek','Hours')");
+        db.runWriteQuery("update tasks set `task-name`='Rushya' where `task-id` = 3");
+        db.runWriteQuery("delete from tasks where `task-name`='Rushya'");
         ResultSet rs = db.runReadQuery("select * from tasks");
         try{
             while(rs.next()){
@@ -24,6 +28,6 @@ public class mainClass {
             System.out.println("From main Class");
             System.out.println(e);
         }
-        
+        */
     }
 }

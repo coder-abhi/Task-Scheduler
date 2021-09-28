@@ -21,6 +21,9 @@ public class database {
         try{
             con = DriverManager.getConnection(url, username, password);
             st = con.createStatement();
+            if (con != null) {
+                System.out.println("Connected");
+            }
         }
         catch(Exception e){
             System.out.println("From onstructor of database class");
@@ -39,5 +42,18 @@ public class database {
             System.out.println(e);
         }
         return rs;
+    }
+    public boolean runWriteQuery(String query)
+    {
+        int rowEffect = 0;
+        try{
+            rowEffect = st.executeUpdate(query);
+        }
+        catch(Exception e){
+            System.out.println("Error in Database Read Query");
+            System.out.println(e);
+        }
+        if(rowEffect > 0) return true;
+        return false;
     }
 }
