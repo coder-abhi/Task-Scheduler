@@ -17,7 +17,12 @@ public class TaskCard extends javax.swing.JFrame {
     public TaskCard() {
         initComponents();
     }
-
+    public class add{
+        private void name(String str)
+        {
+            lblTaskNameAns.setText(str);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,6 +45,7 @@ public class TaskCard extends javax.swing.JFrame {
         lblTotalWork = new javax.swing.JLabel();
         lblTotalDeadlineAns = new javax.swing.JLabel();
         lblTotalWorkAns = new javax.swing.JLabel();
+        lblTaskNameAns = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,13 +75,16 @@ public class TaskCard extends javax.swing.JFrame {
                     .addComponent(lblDeadline, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(taskCardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTaskName, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(taskCardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(deadlineProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(workProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(taskCardPanelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(lblRequire, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblRequire, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(taskCardPanelLayout.createSequentialGroup()
+                        .addComponent(lblTaskName, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTaskNameAns, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(27, 27, 27)
                 .addGroup(taskCardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(taskCardPanelLayout.createSequentialGroup()
@@ -100,25 +109,28 @@ public class TaskCard extends javax.swing.JFrame {
                     .addComponent(lblTotalDeadline)
                     .addComponent(lblTotalDeadlineAns))
                 .addGap(5, 5, 5)
-                .addGroup(taskCardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTaskName)
-                    .addComponent(lblTotalWork)
-                    .addComponent(lblTotalWorkAns))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(taskCardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(taskCardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(taskCardPanelLayout.createSequentialGroup()
-                        .addGroup(taskCardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblWork, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(workProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE))
-                        .addGap(10, 10, 10)
-                        .addGroup(taskCardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(deadlineProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
-                            .addComponent(lblDeadline, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
-                    .addGroup(taskCardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnSpinnerSubmit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addSpinner, javax.swing.GroupLayout.Alignment.TRAILING)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblRequire)
+                        .addGroup(taskCardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTaskName)
+                            .addComponent(lblTotalWork)
+                            .addComponent(lblTotalWorkAns))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(taskCardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(taskCardPanelLayout.createSequentialGroup()
+                                .addGroup(taskCardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(lblWork, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(workProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE))
+                                .addGap(10, 10, 10)
+                                .addGroup(taskCardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(deadlineProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 12, Short.MAX_VALUE)
+                                    .addComponent(lblDeadline, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                            .addGroup(taskCardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(btnSpinnerSubmit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(addSpinner, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblRequire))
+                    .addComponent(lblTaskNameAns, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
@@ -184,6 +196,7 @@ public class TaskCard extends javax.swing.JFrame {
     private javax.swing.JLabel lblDeadline;
     private javax.swing.JLabel lblRequire;
     private javax.swing.JLabel lblTaskName;
+    private javax.swing.JLabel lblTaskNameAns;
     private javax.swing.JLabel lblTotalDeadline;
     private javax.swing.JLabel lblTotalDeadlineAns;
     private javax.swing.JLabel lblTotalWork;

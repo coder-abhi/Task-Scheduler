@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package mainPackage;
-
+import java.awt.*;
+import java.awt.event.*;
+//import javax.swing.ScrollPaneConstants;
+import javax.swing.*;
+import java.awt.Dimension;
 /**
  *
  * @author AK
@@ -16,6 +20,70 @@ public class homeFrame extends javax.swing.JFrame {
      */
     public homeFrame() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        addTaskCard();
+    }
+//    public void addTaskCard()
+            
+    public void addTaskCard()
+    {
+          JPanel view = new JPanel();
+          
+//          JPanel blank = new JPanel();
+//          blank.setSize(new Dimension(120,5)); // Dimention(Width,Height)
+          JPanel blank2 = new JPanel();
+          blank2.setSize(new Dimension(120,5));          
+
+          for(int i=0;i<3;i++)
+          {
+            JPanel blank = new JPanel();
+            blank.setSize(new Dimension(120,5));
+            TaskCardPanel task_1 = new TaskCardPanel();
+            view.add(task_1);
+            view.add(blank);
+          }
+//          TaskCardPanel task_1 = new TaskCardPanel();
+//          TaskCardPanel task_2 = new TaskCardPanel();
+//          TaskCardPanel task_3 = new TaskCardPanel();
+//          view.add(task_1);
+//          view.add(blank);
+//          view.add(task_2);
+//          view.add(blank2);
+//          view.add(task_3);
+//          view.setLayout(new GridLayout(5,1,5,10)); //int rows, int columns, int hgap, int vgap
+//          view.setSize(400,400);
+//            view.setLayout(new );
+            view.setLayout(new BoxLayout(view, BoxLayout.Y_AXIS));
+          JScrollPane btn = new JScrollPane(view);
+//          btn.setBackground(Color.CYAN);
+//          TaskCardPanel task_1 = new TaskCardPanel();
+          
+
+
+
+          
+          btn.setBounds(90,50,720,480);          
+          btn.setVisible(true);
+
+          taskPanel.add(btn);
+          taskPanel.revalidate();
+        
+        
+//        TaskCardPanel task_1 = new TaskCardPanel();
+//        JScrollPane taskScrollPanel = new JScrollPane(taskPanel,ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+//        taskScrollPanel.setPreferredSize(new Dimension(70,40));
+//        taskScrollPanel.setBounds(0,0,720,480);
+//        taskScrollPanel.setVisible(true);
+//        taskPanel.add(taskScrollPanel);
+//        taskPanel.revalidate();
+        System.out.println("It Works");
+//        task_1.setSize(10,10);
+//        task_1.setVisible(true);
+//        task_1.setBounds(100, 10, 25, 50);
+//        taskScrollPanel.setViewportView(task_1);
+
+//        task_1.setLocationRelativeTo(null);
+//        taskScrollPanel.validate();
     }
 
     /**
@@ -42,7 +110,7 @@ public class homeFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         mainSplitPane.setDividerLocation(146);
-        mainSplitPane.setPreferredSize(new java.awt.Dimension(720, 480));
+        mainSplitPane.setPreferredSize(new java.awt.Dimension(1080, 720));
 
         leftSplit.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -82,10 +150,9 @@ public class homeFrame extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(leftSplitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnProject, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-                    .addGroup(leftSplitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btnSchedule, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
-                        .addComponent(btnTask, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnHistory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnSchedule, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
+                    .addComponent(btnTask, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnHistory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
         leftSplitLayout.setVerticalGroup(
@@ -97,7 +164,7 @@ public class homeFrame extends javax.swing.JFrame {
                 .addComponent(btnTask, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(53, 53, 53)
                 .addComponent(btnSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                 .addComponent(btnHistory, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42))
         );
@@ -113,26 +180,27 @@ public class homeFrame extends javax.swing.JFrame {
         projectPanel.setLayout(projectPanelLayout);
         projectPanelLayout.setHorizontalGroup(
             projectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 569, Short.MAX_VALUE)
+            .addGap(0, 726, Short.MAX_VALUE)
         );
         projectPanelLayout.setVerticalGroup(
             projectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 554, Short.MAX_VALUE)
         );
 
         rightSplit.add(projectPanel, "card2");
 
         taskPanel.setBackground(new java.awt.Color(255, 0, 204));
+        taskPanel.setPreferredSize(new java.awt.Dimension(1080, 720));
 
         javax.swing.GroupLayout taskPanelLayout = new javax.swing.GroupLayout(taskPanel);
         taskPanel.setLayout(taskPanelLayout);
         taskPanelLayout.setHorizontalGroup(
             taskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 569, Short.MAX_VALUE)
+            .addGap(0, 726, Short.MAX_VALUE)
         );
         taskPanelLayout.setVerticalGroup(
             taskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 554, Short.MAX_VALUE)
         );
 
         rightSplit.add(taskPanel, "card3");
@@ -143,11 +211,11 @@ public class homeFrame extends javax.swing.JFrame {
         schedulePanel.setLayout(schedulePanelLayout);
         schedulePanelLayout.setHorizontalGroup(
             schedulePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 569, Short.MAX_VALUE)
+            .addGap(0, 726, Short.MAX_VALUE)
         );
         schedulePanelLayout.setVerticalGroup(
             schedulePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 554, Short.MAX_VALUE)
         );
 
         rightSplit.add(schedulePanel, "card4");
@@ -158,11 +226,11 @@ public class homeFrame extends javax.swing.JFrame {
         historyPanel.setLayout(historyPanelLayout);
         historyPanelLayout.setHorizontalGroup(
             historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 569, Short.MAX_VALUE)
+            .addGap(0, 726, Short.MAX_VALUE)
         );
         historyPanelLayout.setVerticalGroup(
             historyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 480, Short.MAX_VALUE)
+            .addGap(0, 554, Short.MAX_VALUE)
         );
 
         rightSplit.add(historyPanel, "card5");
@@ -173,11 +241,11 @@ public class homeFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 877, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
         );
 
         pack();
