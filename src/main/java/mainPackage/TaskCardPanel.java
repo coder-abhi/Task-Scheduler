@@ -15,6 +15,7 @@ public class TaskCardPanel extends javax.swing.JPanel {
      * Creates new form TaskCardPanel
      */
     public TaskCardPanel() {
+        
         initComponents();
     }
     
@@ -30,7 +31,25 @@ public class TaskCardPanel extends javax.swing.JPanel {
     {
         lblDeadlineAns.setText(x);
     }
-    
+    void setLabelRequire()
+    {
+        //
+    }
+    void setWorkProgressBar(String x)
+    {
+        int val = Integer.parseInt(x);
+        workProgressBar.setMaximum(val);
+    }
+    void setWorkProgressBarValue(String x)
+    {
+        int val = Integer.parseInt(x);
+        workProgressBar.setValue(val);
+    }
+    void setDeadLineProgressBar(String x)
+    {
+        int val = Integer.parseInt(x);
+        deadlineProgressBar.setMaximum(val);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,7 +84,7 @@ public class TaskCardPanel extends javax.swing.JPanel {
         lblTaskName.setMinimumSize(new java.awt.Dimension(0, 0));
 
         lblRequire.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRequire.setText("minimum requirement : 1 task / day ");
+        lblRequire.setText(" ");
         lblRequire.setMinimumSize(new java.awt.Dimension(0, 0));
 
         addSpinner.setMinimumSize(new java.awt.Dimension(4, 2));

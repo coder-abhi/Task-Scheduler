@@ -72,7 +72,9 @@ public class homeFrame extends javax.swing.JFrame {
               taskCard.setTaskName(rs.getString("task-name"));
               taskCard.setTotalWork(rs.getString("work-target"));
               taskCard.setDeadLine(rs.getString("deadline-date"));
-              
+              taskCard.setWorkProgressBar(rs.getString("work-target"));
+              taskCard.setWorkProgressBarValue(rs.getString("work-complete"));
+//              taskCard.setDeadLineProgressBar(rs.getString("deadline-date"));  // Upcoming Feature
               view.add(blank);
               view.add(taskCard);
               

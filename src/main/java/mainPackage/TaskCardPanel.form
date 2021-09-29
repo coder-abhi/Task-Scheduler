@@ -174,7 +174,7 @@
         <Component class="javax.swing.JLabel" name="lblRequire">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="minimum requirement : 1 task / day "/>
+            <Property name="text" type="java.lang.String" value=" "/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[0, 0]"/>
             </Property>
