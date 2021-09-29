@@ -89,6 +89,7 @@ public class homeFrame extends javax.swing.JFrame {
               long timeRemainHour = time.convert(diff, TimeUnit.MILLISECONDS);
               long todayDoneHour = time.convert(today.getTime()-dateStart.getTime(),TimeUnit.MILLISECONDS);
               
+            
               taskCard.setTaskName(taskName);
               taskCard.setTotalWork(workTarget);
               taskCard.setDeadLine(deadLineDate);
@@ -96,12 +97,21 @@ public class homeFrame extends javax.swing.JFrame {
               taskCard.setWorkProgressBarValue(workComplete);
               taskCard.setDeadLineProgressBar((int)timeRemainHour);  // Upcoming Feature
               taskCard.setDeadLineProgressBarValue((int)todayDoneHour);
+              
+              
+              taskCard.btnSpinnerSubmit;
+              
+              
+              
               view.add(blank);
               view.add(taskCard);
               
               panelList[k] = taskCard;
               k++;
           }
+          JPanel blank = new JPanel();
+          blank.setSize(new Dimension(120,5));
+          view.add(blank);
           }
           catch(Exception e){
               System.out.println("From AddTasCard Funtion");

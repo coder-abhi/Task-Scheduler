@@ -74,6 +74,10 @@ public class TaskCardPanel extends javax.swing.JPanel {
     {
         deadlineProgressBar.setValue(x);
     }
+    void addListener()
+    {
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,6 +119,11 @@ public class TaskCardPanel extends javax.swing.JPanel {
 
         btnSpinnerSubmit.setText("Completed");
         btnSpinnerSubmit.setMinimumSize(new java.awt.Dimension(6, 2));
+        btnSpinnerSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSpinnerSubmitActionPerformed(evt);
+            }
+        });
 
         lblWork.setText("Work");
         lblWork.setMinimumSize(new java.awt.Dimension(2, 1));
@@ -234,6 +243,11 @@ public class TaskCardPanel extends javax.swing.JPanel {
                 .addContainerGap(127, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSpinnerSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSpinnerSubmitActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnSpinnerSubmitActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
