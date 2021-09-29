@@ -10,11 +10,15 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.awt.Dimension;
 import java.sql.*;
+import java.util.concurrent.TimeUnit;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 /**
  *
  * @author AK
  */
 public class homeFrame extends javax.swing.JFrame {
+    SimpleDateFormat dateFormate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
     database db = new database();
     /**
      * Creates new form HomeFrame
@@ -69,12 +73,29 @@ public class homeFrame extends javax.swing.JFrame {
               blank.setSize(new Dimension(120,5));
               TaskCardPanel taskCard = new TaskCardPanel();
 //              rs.getI
-              taskCard.setTaskName(rs.getString("task-name"));
-              taskCard.setTotalWork(rs.getString("work-target"));
-              taskCard.setDeadLine(rs.getString("deadline-date"));
-              taskCard.setWorkProgressBar(rs.getString("work-target"));
-              taskCard.setWorkProgressBarValue(rs.getString("work-complete"));
-//              taskCard.setDeadLineProgressBar(rs.getString("deadline-date"));  // Upcoming Feature
+              
+              String taskName = rs.getString("task-name");
+              String workTarget = rs.getString("work-target");
+              String createDate = rs.getString("create-date");
+              String deadLineDate = rs.getString("deadline-date");
+              String workComplete = rs.getString("work-complete");
+              
+              Date dateStart = dateFormate.parse(createDate);
+              Date dateEnd = dateFormate.parse(deadLineDate);
+              Date today = new Date();
+              long diff = dateEnd.getTime() - dateStart.getTime();
+              TimeUnit time = TimeUnit.HOURS;
+              
+              long timeRemainHour = time.convert(diff, TimeUnit.MILLISECONDS);
+              long todayDoneHour = time.convert(today.getTime()-dateStart.getTime(),TimeUnit.MILLISECONDS);
+              
+              taskCard.setTaskName(taskName);
+              taskCard.setTotalWork(workTarget);
+              taskCard.setDeadLine(deadLineDate);
+              taskCard.setWorkProgressBar(workTarget);
+              taskCard.setWorkProgressBarValue(workComplete);
+              taskCard.setDeadLineProgressBar((int)timeRemainHour);  // Upcoming Feature
+              taskCard.setDeadLineProgressBarValue((int)todayDoneHour);
               view.add(blank);
               view.add(taskCard);
               
@@ -83,6 +104,7 @@ public class homeFrame extends javax.swing.JFrame {
           }
           }
           catch(Exception e){
+              System.out.println("From AddTasCard Funtion");
               System.out.println(e);
           }
           view.setLayout(new BoxLayout(view, BoxLayout.Y_AXIS));

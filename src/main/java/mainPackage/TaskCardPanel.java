@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package mainPackage;
-
+import java.util.concurrent.TimeUnit;
 /**
  *
  * @author AK
@@ -31,10 +31,30 @@ public class TaskCardPanel extends javax.swing.JPanel {
     {
         lblDeadlineAns.setText(x);
     }
-    void setLabelRequire()
+    void setLabelRequire(String x,String y)
     {
         //
     }
+    void setDeadLineProgressBar(String start,String end)
+    {
+        try{
+            
+        
+        TimeUnit time = TimeUnit.HOURS;
+        long longStart = Long.parseLong(start);
+        long longEnd = Long.parseLong(end);
+        int intStart = (int)time.convert(longStart, TimeUnit.MILLISECONDS);
+        int intEnd = (int)time.convert(longEnd, TimeUnit.MILLISECONDS);
+        deadlineProgressBar.setMinimum(intStart);
+        deadlineProgressBar.setMaximum(intEnd);
+        }
+        catch(Exception e)
+        {
+            System.out.println("From setDeadlineProgressBar");
+            System.out.println(e);
+        }
+    }
+    
     void setWorkProgressBar(String x)
     {
         int val = Integer.parseInt(x);
@@ -45,10 +65,14 @@ public class TaskCardPanel extends javax.swing.JPanel {
         int val = Integer.parseInt(x);
         workProgressBar.setValue(val);
     }
-    void setDeadLineProgressBar(String x)
+    void setDeadLineProgressBar(int x)
     {
-        int val = Integer.parseInt(x);
-        deadlineProgressBar.setMaximum(val);
+//        int val = Integer.parseInt(x);
+        deadlineProgressBar.setMaximum(x);
+    }
+    void setDeadLineProgressBarValue(int x)
+    {
+        deadlineProgressBar.setValue(x);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -133,9 +157,9 @@ public class TaskCardPanel extends javax.swing.JPanel {
                                 .addComponent(workProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblRequire, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(taskCardPanelLayout.createSequentialGroup()
-                                .addComponent(lblTaskName, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblTaskName, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblTaskNameAns, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lblTaskNameAns, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(taskCardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(taskCardPanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -198,7 +222,7 @@ public class TaskCardPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(60, Short.MAX_VALUE)
                 .addComponent(taskCardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
         );
@@ -207,7 +231,7 @@ public class TaskCardPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(taskCardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

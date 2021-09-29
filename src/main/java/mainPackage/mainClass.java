@@ -5,7 +5,9 @@
  */
 package mainPackage;
 import java.sql.ResultSet;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 /**
  *
  * @author AK
@@ -13,6 +15,26 @@ import java.sql.ResultSet;
 public class mainClass {
     public static void main(String args[])
     {
+        /*
+        try{
+        SimpleDateFormat dateFormate = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        Date dt = new Date();
+        Date dt2 = dateFormate.parse("30-09-2021 20:00:00");
+        long diff = dt2.getTime() - dt.getTime();
+        TimeUnit time = TimeUnit.HOURS;
+        System.out.println(time.convert(diff, TimeUnit.MILLISECONDS));
+        }
+        catch(Exception e){
+            
+        }
+        */
+        
+        /*
+        database db = new database();
+        db.runWriteQuery("insert into tasks (`task-name`, `task-unit`, `work-complete`, `work-target`, `create-date`, `deadline-date`) "
+                + "values('Project-WebSite','commits','155','500','29-09-2021 20:00:00','30-10-2021 20:00:00')");
+        
+        */
         /*
         database db = new database();
         db.runWriteQuery("insert into tasks (`task-name` , `task-unit`) values('Abhshek','Hours')");
