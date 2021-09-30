@@ -65,7 +65,6 @@ public class homeFrame extends javax.swing.JFrame {
           JPanel view = new JPanel();                  
           JPanel panelList[] = new JPanel[20];
           ResultSet rs =  db.runReadQuery("select * from tasks"); 
-          
           int k = 0;
           try{
           while(rs.next()){
@@ -73,12 +72,15 @@ public class homeFrame extends javax.swing.JFrame {
               blank.setSize(new Dimension(120,5));
               TaskCardPanel taskCard = new TaskCardPanel();
 //              rs.getI
-              
+              int taskId = rs.getInt("id");
               String taskName = rs.getString("task-name");
               String workTarget = rs.getString("work-target");
               String createDate = rs.getString("create-date");
               String deadLineDate = rs.getString("deadline-date");
               String workComplete = rs.getString("work-complete");
+              
+//              int spinnerValue = taskCard.getAddSpinnerValue();
+              
               
               Date dateStart = dateFormate.parse(createDate);
               Date dateEnd = dateFormate.parse(deadLineDate);
@@ -89,7 +91,7 @@ public class homeFrame extends javax.swing.JFrame {
               long timeRemainHour = time.convert(diff, TimeUnit.MILLISECONDS);
               long todayDoneHour = time.convert(today.getTime()-dateStart.getTime(),TimeUnit.MILLISECONDS);
               
-            
+              
               taskCard.setTaskName(taskName);
               taskCard.setTotalWork(workTarget);
               taskCard.setDeadLine(deadLineDate);
@@ -99,7 +101,8 @@ public class homeFrame extends javax.swing.JFrame {
               taskCard.setDeadLineProgressBarValue((int)todayDoneHour);
               
               
-              taskCard.btnSpinnerSubmit;
+              taskCard.setSpinnerListener(taskId);
+                   
               
               
               

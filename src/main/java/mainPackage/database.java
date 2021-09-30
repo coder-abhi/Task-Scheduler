@@ -21,6 +21,7 @@ public class database {
         try{
             con = DriverManager.getConnection(url, username, password);
             st = con.createStatement();
+            con.setAutoCommit(false);
             if (con != null) {
                 System.out.println("Connected");
             }
@@ -34,8 +35,8 @@ public class database {
     {
         ResultSet rs = null;
         try{
-            
             rs = st.executeQuery(query);
+            con.commit();
         }
         catch(Exception e){
             System.out.println("Error in Database Read Query");
@@ -48,6 +49,8 @@ public class database {
         int rowEffect = 0;
         try{
             rowEffect = st.executeUpdate(query);
+            con.commit();
+//            con.close();
         }
         catch(Exception e){
             System.out.println("Error in Database Read Query");
@@ -56,4 +59,5 @@ public class database {
         if(rowEffect > 0) return true;
         return false;
     }
+   
 }

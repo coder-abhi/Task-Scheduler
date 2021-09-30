@@ -4,6 +4,11 @@
  * and open the template in the editor.
  */
 package mainPackage;
+//import ActionListenerList.*;
+//import ActionListenerList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 import java.util.concurrent.TimeUnit;
 /**
  *
@@ -18,6 +23,95 @@ public class TaskCardPanel extends javax.swing.JPanel {
         
         initComponents();
     }
+    
+    
+    
+    
+public class ProgressUpdateAL implements ActionListener
+    {
+        database db = new database();
+        int taskId;
+        int updateValue;
+        int oldValue = 0;
+        public ProgressUpdateAL(int taskId){
+            this.taskId = taskId;
+        }
+        public void actionPerformed(ActionEvent e)
+        {
+            ResultSet rs = db.runReadQuery("select * from tasks where `id` = "+taskId);
+            try{
+                if(rs.next())
+                {
+                    oldValue = rs.getInt("work-complete");
+                }  
+                try{
+                    addSpinner.commitEdit();
+                }
+                catch(Exception t)
+                {
+                    System.out.println("From serSpinnerListener");
+                    System.out.println(t);
+                }
+                int updateValue = (Integer)addSpinner.getValue();
+                
+                int newValue = oldValue+updateValue;
+                System.out.println("New Value = "+newValue);
+                
+                boolean check =  db.runWriteQuery("update tasks set `work-complete`="+newValue+" where `id` = "+taskId);
+                if(check) System.out.println("It Writes");
+            }
+            catch(Exception t)
+            {
+                System.out.println("From ProgressUpdateAL");
+                System.out.println(t);
+            }
+            
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    int getAddSpinnerValue()
+    {
+        return (Integer)addSpinner.getValue();
+    }
+    void setSpinnerListener(int taskId)
+    {
+
+//        System.out.println("Spinner Value = "+spinnerValue);
+        ProgressUpdateAL obj = new ProgressUpdateAL(taskId);
+        btnSpinnerSubmit.addActionListener(obj);
+    }
+    
     
     void setTaskName(String str)
     {
@@ -231,7 +325,7 @@ public class TaskCardPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(taskCardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 775, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
         );
@@ -240,7 +334,7 @@ public class TaskCardPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(taskCardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
