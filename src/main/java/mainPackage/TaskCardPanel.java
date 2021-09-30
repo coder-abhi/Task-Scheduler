@@ -33,8 +33,10 @@ public class ProgressUpdateAL implements ActionListener
         int taskId;
         int updateValue;
         int oldValue = 0;
+        TaskCardPanel TaskObj;
         public ProgressUpdateAL(int taskId){
             this.taskId = taskId;
+            this.TaskObj = TaskObj;
         }
         public void actionPerformed(ActionEvent e)
         {
@@ -56,9 +58,12 @@ public class ProgressUpdateAL implements ActionListener
                 
                 int newValue = oldValue+updateValue;
                 System.out.println("New Value = "+newValue);
+                workProgressBar.setValue(newValue);
+                
                 
                 boolean check =  db.runWriteQuery("update tasks set `work-complete`="+newValue+" where `id` = "+taskId);
                 if(check) System.out.println("It Writes");
+                
             }
             catch(Exception t)
             {
@@ -209,6 +214,7 @@ public class ProgressUpdateAL implements ActionListener
         lblRequire.setText(" ");
         lblRequire.setMinimumSize(new java.awt.Dimension(0, 0));
 
+        addSpinner.setModel(new javax.swing.SpinnerNumberModel());
         addSpinner.setMinimumSize(new java.awt.Dimension(4, 2));
 
         btnSpinnerSubmit.setText("Completed");
@@ -267,8 +273,8 @@ public class ProgressUpdateAL implements ActionListener
                             .addGroup(taskCardPanelLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblUpdateProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(addSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(addSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSpinnerSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE))
