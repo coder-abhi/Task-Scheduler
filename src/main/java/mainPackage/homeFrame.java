@@ -125,7 +125,7 @@ public class homeFrame extends javax.swing.JFrame {
 //          btn.setBackground(Color.CYAN);
 //          TaskCardPanel task_1 = new TaskCardPanel();
      
-          ScrollPanel.setBounds(0,0,taskPanel.getWidth(),taskPanel.getHeight());          
+          ScrollPanel.setBounds(80,0,taskPanel.getWidth()-80,taskPanel.getHeight());          
           ScrollPanel.setVisible(true);
 
           taskPanel.add(ScrollPanel);
@@ -152,6 +152,9 @@ public class homeFrame extends javax.swing.JFrame {
         rightSplit = new javax.swing.JLayeredPane();
         projectPanel = new javax.swing.JPanel();
         taskPanel = new javax.swing.JPanel();
+        btnTaskAdd = new javax.swing.JButton();
+        btnTaskUpdate = new javax.swing.JButton();
+        btnTaskDelete = new javax.swing.JButton();
         schedulePanel = new javax.swing.JPanel();
         historyPanel = new javax.swing.JPanel();
 
@@ -241,15 +244,39 @@ public class homeFrame extends javax.swing.JFrame {
         taskPanel.setBackground(new java.awt.Color(255, 0, 204));
         taskPanel.setPreferredSize(new java.awt.Dimension(1080, 720));
 
+        btnTaskAdd.setText("Add");
+        btnTaskAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaskAddActionPerformed(evt);
+            }
+        });
+
+        btnTaskUpdate.setText("Update");
+
+        btnTaskDelete.setText("Delete");
+
         javax.swing.GroupLayout taskPanelLayout = new javax.swing.GroupLayout(taskPanel);
         taskPanel.setLayout(taskPanelLayout);
         taskPanelLayout.setHorizontalGroup(
             taskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
+            .addGroup(taskPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(taskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnTaskUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTaskAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnTaskDelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(587, Short.MAX_VALUE))
         );
         taskPanelLayout.setVerticalGroup(
             taskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 479, Short.MAX_VALUE)
+            .addGroup(taskPanelLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(btnTaskAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(btnTaskUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addComponent(btnTaskDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
 
         rightSplit.add(taskPanel, "card3");
@@ -332,6 +359,10 @@ public class homeFrame extends javax.swing.JFrame {
         rightSplit.revalidate();
     }//GEN-LAST:event_btnHistoryActionPerformed
 
+    private void btnTaskAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaskAddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTaskAddActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -373,6 +404,9 @@ public class homeFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnProject;
     private javax.swing.JButton btnSchedule;
     private javax.swing.JButton btnTask;
+    private javax.swing.JButton btnTaskAdd;
+    private javax.swing.JButton btnTaskDelete;
+    private javax.swing.JButton btnTaskUpdate;
     private javax.swing.JPanel historyPanel;
     private javax.swing.JPanel leftSplit;
     private javax.swing.JSplitPane mainSplitPane;
