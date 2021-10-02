@@ -29,12 +29,10 @@ public class mainClass {
         }
         */
         
-        /*
-        database db = new database();
-        db.runWriteQuery("insert into tasks (`task-name`, `task-unit`, `work-complete`, `work-target`, `create-date`, `deadline-date`) "
-                + "values('Project-WebSite','commits','155','500','29-09-2021 20:00:00','30-10-2021 20:00:00')");
         
-        */
+        database db = new database();
+//        PreparedStatement stmt = 
+        
         /*
         database db = new database();
         db.runWriteQuery("insert into tasks (`task-name` , `task-unit`) values('Abhshek','Hours')");

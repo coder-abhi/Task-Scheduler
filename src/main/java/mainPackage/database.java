@@ -44,16 +44,27 @@ public class database {
         }
         return rs;
     }
-    public boolean runWriteQuery(String query)
+    public boolean runWriteQuery(String query,String[] paramArray)
     {
         int rowEffect = 0;
+        
+//        PreparedStatement NewQuery = con.prepareStatement(query, paramArray);      
+        
         try{
-            rowEffect = st.executeUpdate(query);
+            PreparedStatement NewQuery = con.prepareStatement(query);
+            for(int i=0;i<paramArray.length;i++)
+            {
+                System.out.println("Appeared "+ paramArray[i]);
+                NewQuery.setString(i+1,paramArray[i]);
+            }
+            
+//            NewQuery.setInt(rowEffect, rowEffect);
+            rowEffect = NewQuery.executeUpdate();
             con.commit();
-//            con.close();
+//          con.close();
         }
         catch(Exception e){
-            System.out.println("Error in Database Read Query");
+            System.out.println("Error in Database Write Query");
             System.out.println(e);
         }
         if(rowEffect > 0) return true;

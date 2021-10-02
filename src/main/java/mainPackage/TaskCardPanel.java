@@ -60,10 +60,11 @@ public class ProgressUpdateAL implements ActionListener
                 System.out.println("New Value = "+newValue);
                 workProgressBar.setValue(newValue);
                 
-                
-                boolean check =  db.runWriteQuery("update tasks set `work-complete`="+newValue+" where `id` = "+taskId);
+                String[] paramQuery = {String.valueOf(newValue),String.valueOf(taskId)};
+                System.out.println("PramQuery"+paramQuery[0]);
+                boolean check =  db.runWriteQuery("update tasks set `work-complete`= ? where `id` = ?",paramQuery);
                 if(check) System.out.println("It Writes");
-                
+            
             }
             catch(Exception t)
             {
